@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int M = 3;
+const int N = 3;
+void foo1(int arr[M][N]){
+	for(int i =0 ;i< M;i++){
+		for(int j=0;j<N;j++){
+			cout<<arr[i][j]<<" ";
+		}cout<<endl;
+	}cout<<endl;
+}
+void foo2(int arr[][N],int m){
+	for(int i=0;i<m;i++){
+		for(int j=0;j<N;j++){
+			cout<<arr[i][j]<<" ";
+		}cout<<endl;
+	}cout<<endl;
+}
+void foo3(int *arr,int m,int n){
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+			cout<<*((arr + i* n)+j)<<" ";
+		}cout<<endl;
+	}cout<<endl;
+}
+void foo4(const vector<vector<int>> &arr){
+	for(int i=0;i<arr.size();i++){
+		for(int j=0;j<arr[i].size();j++){
+			cout<<arr[i][j]<<" ";
+		}cout<<endl;
+	}cout<<endl;
+}
+int main(){
+	int arr[][3]={{1,2,3},{4,5,6},{7,8,9}};
+	foo1(arr);
+	foo2(arr,3);
+	foo3((int *)arr,3,3);
+	vector<vector<int>> arr1{{1,2,3},{4,5,6},{7,8,9}};
+	foo4(arr1);
+	return 0;
+}
