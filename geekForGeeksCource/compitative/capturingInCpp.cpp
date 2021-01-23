@@ -23,7 +23,7 @@ int var=10;
 auto lambda1=[ = ](){ // runtime capturing , from local scope /*v*/
     return 2*var;
 };
-auto lambda2=[v=var](){ //compile time capturing , form local scope
+auto lambda2=[v=var](){ //compile time capturing , form local scope , and stores it in v
     return 2*v;
 };
 int main(){
