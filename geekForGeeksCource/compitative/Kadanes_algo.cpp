@@ -2,6 +2,22 @@
 using namespace std;
 //https://www.youtube.com/watch?v=HCL4_bOd3-4
 int maxSum(const vector<int> &v){
+    bool all_neg=true;
+    for(int i=0;i<v.size();i++){
+        if(v[i]>0){
+            all_neg=false;
+            break;
+        }
+    }
+    if(all_neg){
+        int m=INT_MIN;
+        for(int i=0;i<v.size();i++){
+            if(v[i]>m){
+                m=v[i];
+            }
+        }
+        return m;
+    }
   int max_sum=0;
   int currentSum=0;
   int s=0,e=v.size()-1;
@@ -23,7 +39,8 @@ int maxSum(const vector<int> &v){
 }
 
 int main(){
-  vector<int> v{5,-4,3,-3,6,1,-1};
+    //5,-4,3,-3,6,1,-1
+  vector<int> v{-5,-4,-3,-3,-6,-1,-1};
   int m=maxSum(v);
   cout<<m<<endl;
   return 0;
