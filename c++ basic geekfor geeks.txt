@@ -1,0 +1,145 @@
+Topic: first IO
+:-https://www.youtube.com/watch?v=SrQMvtJIXsQ&feature=emb_logo
+void firstIO(){
+	ios_base::sync_with_stdio(false);
+	//this linf turn off the synchronization between c++ and c standard stream
+	// to avoid overriding
+	cin.tie(null); //untieing ip and op stream
+	//this line turn off the synchronization between cin and cout
+	// before cout cin must be flushed out
+	//vice versa also true
+}
+
+int main(){
+	firstIO();
+	....
+}
+--------------------------------------------------------------------------------------------------
+Topic: Random access iterator
+:-https://www.youtube.com/watch?v=CtDLRctodGs&feature=emb_logo
+
+//iterators also supported by deque
+vector<int> v{10,20,30};
+vector<int>::iterator itr;
+vector<int>:: reverse_iterator rit;
+for(auto x:v) cout<<x<<" ";        // 10 20 30
+for(itr=v.begin();itr!=v.end();itr++) cout<< *itr<<" ";    //10 20 30
+for(rti=v.rbegin();rti!=rend();rti++) cout<< *rti<<" ";    // 30 20 10
+for(int i=0;i<v.size();i++) cout<< v[i]<<" ";     //10 20 30
+
+--------------------------------------------------------------------------------------------------
+Topic: forward iterator
+:-https://www.youtube.com/watch?v=7r5yi5jKEqc&feature=emb_logo
+
+forward_list<int> flist {1,2,3,4};
+for(auto x: flist)
+	cout<< x<<" "; //1,2,3,4
+Note--> forward iterator also supported by unordered_map and unordered_set
+
+--------------------------------------------------------------------------------------------------
+Topic: bidirectional iterator
+:-https://www.youtube.com/watch?v=0fDwQQphFnQ&feature=emb_logo
+
+Note--> set,map,multimap,multiset,vector[random access],list[dobly] supports bidirectional iterator
+
+--------------------------------------------------------------------------------------------------
+Topic: make_tuple() 
+:-https://www.youtube.com/watch?v=yjem0xVFu1U&feature=emb_logo
+useful at the time of
+ 1 multiple assignment// using unbinding
+2 swaping like python style
+3 multi value return
+
+#include<tuple>
+int w,x,y,z;
+tie(w,x,y,z)=make_tuple(10,20,30,40); //unbinding and assigning
+cout<<w<<x<<y<<z; //10 20 30 40
+
+tie(y,x)=make_tuple(x,y);
+cout<<x<<y;       //30 20
+ 
+<<<<<< multi value return <<<<<<<
+auto return_total(){
+    return make_tuple(5,10,15);
+}
+int main() {
+    // Write C++ code here
+    int a,b,c;
+    tie(a,b,c)=return_total();
+    cout<<a<<" "<<b<<" "<<c<<endl;
+    return 0;
+}
+--------------------------------------------------------------------------------------------------
+Topic: for each loop and reference
+:- https://www.youtube.com/watch?v=B9n11oOm3yQ&feature=emb_logo
+
+
+vector<int> v {1,2,3,4,5};
+    for(auto x : v) cout<<++x<<" "; cout<<endl; // x keeps the copy of main one
+    for(auto x : v) cout<<x<<" "; cout<<endl;
+    for(auto &x : v) cout<<++x<<" ";cout<<endl;  // x itself is the variable
+    for(auto x : v) cout<<x<<" ";cout<<endl;
+    for(auto &y : v) y=1;    //y itself is the variable
+    for(auto x : v) cout<<x<<" ";cout<<endl;
+
+output>>>>>2 3 4 5 6 
+1 2 3 4 5 
+2 3 4 5 6 
+2 3 4 5 6 
+1 1 1 1 1 
+
+--------------------------------------------------------------------------------------------------
+Topic: auto keyword
+:-https://www.youtube.com/watch?v=DyUEDS5VEv8&feature=emb_logo
+
+auto a=10;
+    cout<<typeid(a).name()<<endl;
+    auto b=14.6;
+    cout<<typeid(b).name()<<endl;
+    auto *p=new auto(b);
+    cout<<typeid(p).name()<<endl;
+    auto *p1=&a;
+    cout<<typeid(p1).name()<<endl;
+    auto c=14.5f;
+    cout<<typeid(c).name()<<endl;
+    map<int,int> m;
+    auto itr=m.begin();
+    cout<<typeid(itr).name()<<endl;
+output>>>>>>>i
+d
+Pd
+Pi
+f
+St17_Rb_tree_iteratorISt4pairIKiiEE
+--------------------------------------------------------------------------------------------------
+Topic: size_t
+:- https://www.youtube.com/watch?v=_5wjpnXmfYk&feature=emb_logo
+0 to highest_unsighed_int value
+
+size_t i = -5; /// highest_unsighed_int - 5
+typeid(i).name() //// j means unsighed int
+--------------------------------------------------------------------------------------------------
+Topic: typeid()
+:-https://www.youtube.com/watch?v=V3ZmfBRk2_8&feature=emb_logo
+
+cout<<typeid(int).name()<<endl;
+    cout<<typeid(float).name()<<endl;
+    cout<<typeid(char).name()<<endl;
+    cout<<typeid(string).name()<<endl;
+    cout<<typeid(int*).name()<<endl;
+    cout<<typeid(double).name()<<endl;
+    cout<<typeid(char*).name()<<endl;
+    cout<<typeid(float*).name()<<endl;
+	cout<<typeid(double*).name()<<endl;
+	cout<<typeid(set<int>()).name()<<endl;
+	cout<<typeid(map<int,int>()).name()<<endl;
+	cout<<typeid(set<int>::iterator).name()<<endl;
+	cout<<typeid(vector<int>()).name()<<endl;
+	cout<<typeid(size_t).name()<<endl;
+	cout<<typeid(unsigned int).name()<<endl;
+	cout<<typeid(long long).name()<<endl;
+	cout<<typeid(int []).name()<<endl;
+	cout<<typeid(pair<int,int>).name()<<endl;
+	cout<<typeid(tuple<int,int, float>).name()<<endl;
+	cout<<typeid(int&).name()<<endl;
+output>>>> do copy paste on it
